@@ -77,16 +77,6 @@
 }
 
 .about__bio p:first-child::first-letter {
-  font-size: 3rem;
-  font-weight: 700;
-  float: left;
-  line-height: 1;
-  margin-right: 0.5rem;
-  margin-top: 0.1rem;
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* Highlighted keywords */

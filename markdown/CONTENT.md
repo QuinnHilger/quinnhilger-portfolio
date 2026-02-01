@@ -104,7 +104,16 @@ I’m evolving my development patterns to leverage the latest AI tools and explo
 | End Date    | Present             |
 | Description | Backend Development |
 
-**Key Accomplishments:**
+**Tech**
+
+- .NET Core
+- C#
+- SQL
+- React
+- TypeScript
+- DataDog
+- AWS
+- Kubernetes
 
 #### Job 2
 
@@ -122,6 +131,13 @@ I’m evolving my development patterns to leverage the latest AI tools and explo
 - **Implemented live input validation** and collaborated with product managers and designers to optimize user experience via Figma designs.
 - **Wrote comprehensive unit tests** using Vitest, significantly improving component and service reliability.
 
+**Tech**
+
+- React
+- Tanstack Query
+- Vitest
+- TypeScript
+
 ---
 
 #### Job 3
@@ -132,6 +148,13 @@ I’m evolving my development patterns to leverage the latest AI tools and explo
 | **Start Date** | June 2023 |
 | **End Date** | September 2023 |
 | **Description** | Developed automated deployment processes and system management solutions for EW and signal intelligence applications. |
+
+**Tech**
+
+- Ansible
+- Jenkins
+- Docker
+- Bash
 
 **Key Accomplishments:**
 
@@ -152,6 +175,17 @@ I’m evolving my development patterns to leverage the latest AI tools and explo
 | Graduation Year | 2025                |
 
 - Graduated Summa Cum Laude
+- Member of Theta Chi fraternity
+
+**Tech**
+
+- C++
+- Python
+- Verilog
+- Java
+- React
+- C
+- SQL
 
 ---
 

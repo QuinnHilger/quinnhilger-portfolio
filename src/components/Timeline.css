@@ -1,0 +1,428 @@
+.timeline {
+  position: relative;
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    #12121a 0%,
+    #0f0f18 50%,
+    var(--color-bg) 100%
+  );
+}
+
+.timeline__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline__heading {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.timeline__content {
+  position: relative;
+}
+
+/* Vertical timeline line */
+.timeline__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-50%);
+}
+
+.timeline__line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: linear-gradient(to bottom, #60a5fa, #a78bfa);
+  transform-origin: top;
+  transition: transform 0.1s ease-out;
+}
+
+/* Timeline entries container */
+.timeline__entries {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Individual entry */
+.timeline__entry {
+  position: relative;
+  width: 45%;
+  opacity: 0;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.timeline__entry--left {
+  align-self: flex-start;
+  transform: translateX(-50px);
+  margin-top: -6rem;
+}
+
+.timeline__entry:first-child {
+  margin-top: 0;
+}
+
+.timeline__entry--right {
+  align-self: flex-end;
+  transform: translateX(50px);
+  margin-top: -6rem; /* Overlap with previous card */
+}
+
+.timeline__entry--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.timeline__entry--visible.timeline__entry--right {
+  transform: translateX(0);
+}
+
+/* Node dot on timeline */
+.timeline__node {
+  position: absolute;
+  top: 2rem;
+  width: 16px;
+  height: 16px;
+  background: var(--color-bg);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+/* Position nodes exactly on the center timeline */
+/* Cards are 45% width, timeline is at 50%, so gap to center is 5% + half the 10% gap = ~11% */
+.timeline__entry--left .timeline__node {
+  right: -11.1%;
+  transform: translateX(50%);
+}
+
+.timeline__entry--right .timeline__node {
+  left: -11.1%;
+  transform: translateX(-50%);
+}
+
+.timeline__node--active {
+  border-color: #60a5fa;
+  background: #60a5fa;
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+  animation: pulse-node 2s ease-in-out infinite;
+}
+
+/* Connector line from card to node */
+.timeline__node::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(96, 165, 250, 0.3)
+  );
+  transform: translateY(-50%);
+  z-index: -1;
+}
+
+.timeline__entry--left .timeline__node::before {
+  right: 100%;
+  width: calc(11.1% * 100 / 11.1); /* Stretch to card edge */
+  width: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(96, 165, 250, 0.4)
+  );
+}
+
+.timeline__entry--right .timeline__node::before {
+  left: 100%;
+  width: 50px;
+  background: linear-gradient(
+    270deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(96, 165, 250, 0.4)
+  );
+}
+
+.timeline__node--active::before {
+  background: linear-gradient(
+    90deg,
+    rgba(96, 165, 250, 0.3),
+    rgba(96, 165, 250, 0.6)
+  );
+}
+
+.timeline__entry--right .timeline__node--active::before {
+  background: linear-gradient(
+    270deg,
+    rgba(96, 165, 250, 0.3),
+    rgba(96, 165, 250, 0.6)
+  );
+}
+
+@keyframes pulse-node {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
+  }
+}
+
+/* Card styling */
+.timeline__card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.timeline__card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(96, 165, 250, 0.3);
+  box-shadow: 0 8px 32px rgba(96, 165, 250, 0.1);
+  transform: translateY(-4px);
+}
+
+.timeline__card-header {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline__logo {
+  height: 56px;
+  width: auto;
+  max-width: 100px;
+  border-radius: 8px;
+  object-fit: contain;
+  padding: 4px;
+}
+
+.timeline__card-info {
+  flex: 1;
+}
+
+.timeline__company {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 0.25rem;
+}
+
+.timeline__role {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 0.25rem;
+}
+
+.timeline__dates {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0;
+}
+
+.timeline__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 1rem;
+}
+
+/* Tech badges */
+.timeline__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.timeline__tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.timeline__tech-badge:hover {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: translateY(-2px);
+}
+
+.timeline__tech-icon {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #60a5fa;
+}
+
+.timeline__tech-name {
+  white-space: nowrap;
+}
+
+/* Accomplishments list */
+.timeline__accomplishments {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline__accomplishments li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.timeline__accomplishments li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #60a5fa;
+}
+
+.timeline__accomplishments li:last-child {
+  margin-bottom: 0;
+}
+
+/* Education Divider */
+.timeline__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0 6rem;
+  position: relative;
+}
+
+.timeline__divider-node {
+  display: none; /* Hide the dot - it overlaps the text */
+}
+
+.timeline__divider-text {
+  background: var(--color-bg, #0a0a0f);
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  z-index: 5;
+}
+
+/* Resume Download Button */
+.timeline__resume {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.timeline__resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.1),
+    rgba(167, 139, 250, 0.1)
+  );
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.timeline__resume-btn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(96, 165, 250, 0.2),
+    rgba(167, 139, 250, 0.2)
+  );
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow: 0 8px 32px rgba(96, 165, 250, 0.2);
+  transform: translateY(-2px);
+}
+
+.timeline__resume-icon {
+  font-size: 1.25rem;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 900px) {
+  .timeline__line {
+    left: 20px;
+  }
+
+  .timeline__entry {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+  }
+
+  .timeline__entry--left,
+  .timeline__entry--right {
+    align-self: flex-start;
+    transform: translateX(-30px);
+  }
+
+  .timeline__entry--left .timeline__node,
+  .timeline__entry--right .timeline__node {
+    left: -42px;
+    right: auto;
+    transform: translateX(0);
+  }
+
+  .timeline__heading {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    padding: 4rem 1rem;
+  }
+
+  .timeline__card {
+    padding: 1rem;
+  }
+
+  .timeline__logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .timeline__company {
+    font-size: 1.1rem;
+  }
+}

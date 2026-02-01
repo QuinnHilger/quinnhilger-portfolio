@@ -24,12 +24,12 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Current role/focus areas
 - [x] Fun facts or personal interests (optional)
 
-### 1.3 Experience/Timeline
+### 1.3 Experience/Timeline ✅
 
-- [ ] Work history entries with company, role, dates
-- [ ] Key accomplishments per role
-- [ ] Visual timeline layout
-- [ ] Education section
+- [x] Work history entries with company, role, dates
+- [x] Key accomplishments per role
+- [x] Visual timeline layout
+- [x] Education section
 
 ### 1.4 Projects Section
 
