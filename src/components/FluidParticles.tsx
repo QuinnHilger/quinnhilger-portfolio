@@ -20,7 +20,7 @@ interface FluidParticlesProps {
 }
 
 export function FluidParticles({
-  particleCount = 80,
+  particleCount = 250,
   particleColor = "rgba(100, 180, 255, 0.8)",
   lineColor = "rgba(100, 180, 255, 0.15)",
   maxDistance = 150,

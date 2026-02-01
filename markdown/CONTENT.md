@@ -66,7 +66,7 @@ C:\Users\quinn\Documents\Code\quinnhilger-portfolio\src\assets\senior-picture-dr
 ### Bio
 
 ```
-Hello! I’m a software engineer at DraftKings, where I build tools for user segmentation and marketing personalization. I recently graduated Summa Cum Laude from UCLA with a degree in computer science, which sparked my interest in optimization and AI. I’ve enjoyed creating user-facing iOS apps around activities I care about, like habit tracking and fitness, and I really value the learning and impact I get from the work I do at DraftKings. Right now, I’m focused on growing as an engineer and gaining the experience needed to tackle even more complex challenges. Looking ahead, I’m excited by the possibilities AI offers to solve important problems and make a meaningful impact in the world.
+Hello! I’m a software engineer at DraftKings, where I build tools for user segmentation and marketing personalization. I recently graduated Summa Cum Laude from UCLA with a degree in computer science, which sparked my interest in algorithms and AI. I’ve enjoyed creating user-facing iOS apps around activities I care about, like habit tracking and fitness, and I really value the learning and impact I get from the work I do at DraftKings. Right now, I’m focused on growing as an engineer and gaining the experience needed to tackle even more complex challenges. Looking ahead, I’m excited by the possibilities AI offers to solve important problems and make a meaningful impact in the world.
 
 ```
 

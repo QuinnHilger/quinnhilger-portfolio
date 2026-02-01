@@ -6,23 +6,23 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Phase 1: Core Sections
 
-### 1.1 Hero Section
+### 1.1 Hero Section ✅
 
-- [ ] Bold name typography with gradient or accent styling
-- [ ] Professional title/role display
-- [ ] Profile photo
-- [ ] Short tagline or bio snippet
-- [ ] Social links (GitHub, LinkedIn, etc.)
-- [ ] Call-to-action button (e.g., "View My Work" and "Get in Touch")
-- [ ] Background styling (gradient, subtle patterns, or imagery)
-- [ ] Eye catching animation or cursor interaction
+- [x] Bold name typography with gradient or accent styling
+- [x] Professional title/role display
+- [x] Profile photo
+- [x] Short tagline or bio snippet
+- [x] Social links (GitHub, LinkedIn, etc.)
+- [x] Call-to-action button (e.g., "View My Work" and "Get in Touch")
+- [x] Background styling (gradient, subtle patterns, or imagery)
+- [x] Eye catching animation or cursor interaction
 
-### 1.2 About Me Section
+### 1.2 About Me Section ✅
 
-- [ ] Profile photo or avatar
-- [ ] Personal bio and background story
-- [ ] Current role/focus areas
-- [ ] Fun facts or personal interests (optional)
+- [x] Profile photo or avatar
+- [x] Personal bio and background story
+- [x] Current role/focus areas
+- [x] Fun facts or personal interests (optional)
 
 ### 1.3 Experience/Timeline
 
@@ -117,7 +117,7 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Current Progress
 
-**Next Up:** Hero Section (1.1)
+**Next Up:** Projects Section (1.4)
 
 ---
 

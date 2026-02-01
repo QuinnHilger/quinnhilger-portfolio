@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { FluidParticles } from "./FluidParticles";
 import { TypewriterText } from "./TypewriterText";
 import { CyclingTagline } from "./CyclingTagline";
 import { FalconCursor } from "./FalconCursor";
 import { FlyingShips } from "./FlyingShips";
 import profileImage from "../assets/ucla-senior-photo.jpg";
+import drawnPhoto from "../assets/senior-picture-drawn.png";
 import "./Hero.css";
 
 // Icons as inline SVGs
@@ -26,6 +28,24 @@ const EmailIcon = () => (
 );
 
 export function Hero() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
+      // Progress from 0 to 1 as we scroll through the hero section
+      const progress = Math.min(
+        Math.max(scrollY / (viewportHeight * 0.8), 0),
+        1,
+      );
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const taglinePairs: [string, string][] = [
     ["Creative Thinking", "Problem Solver"],
     ["Coffee Powered", "Full Stack Developer"],
@@ -33,10 +53,28 @@ export function Hero() {
     ["Curiosity Led", "Builder"],
   ];
 
+  // Calculate photo transform based on scroll
+  // Move from right side to left side as scroll progresses
+  const photoTranslateX = scrollProgress * -900; // Move left (vw based)
+  const photoTranslateY = scrollProgress * 92; // Move down much further
+  const heroPhotoOpacity = 1 - scrollProgress;
+  const drawnPhotoOpacity = scrollProgress;
+
+  // Fade out background elements as we scroll
+  const backgroundOpacity = Math.max(0, 1 - scrollProgress * 1.5);
+
   return (
     <section className="hero">
-      <FluidParticles particleCount={150} />
-      <FlyingShips />
+      {/* Background elements that fade out on scroll */}
+      <div
+        style={{
+          opacity: backgroundOpacity,
+          transition: "opacity 0.1s ease-out",
+        }}
+      >
+        <FluidParticles particleCount={150} />
+        <FlyingShips />
+      </div>
       <FalconCursor size={45} />
 
       <div className="hero__container">
@@ -110,9 +148,25 @@ export function Hero() {
             </a>
           </div>
         </div>
-
-        <div className="hero__image-wrapper">
-          <img src={profileImage} alt="Quinn Hilger" className="hero__image" />
+        <div
+          className="hero__image-wrapper"
+          style={{
+            transform: `translate(${photoTranslateX}px, ${photoTranslateY}vh)`,
+            transition: "transform 0.1s ease-out",
+          }}
+        >
+          <img
+            src={profileImage}
+            alt="Quinn Hilger"
+            className="hero__image"
+            style={{ opacity: heroPhotoOpacity }}
+          />
+          <img
+            src={drawnPhoto}
+            alt="Quinn Hilger - Hand drawn"
+            className="hero__image hero__image--drawn"
+            style={{ opacity: drawnPhotoOpacity }}
+          />
         </div>
       </div>
     </section>
