@@ -33,11 +33,10 @@ A progressive feature roadmap for building out the portfolio site.
 
 ### 1.4 Projects Section
 
-- [ ] Project card component with image, title, description
-- [ ] Technology tags for each project
-- [ ] Links to live demo and source code
-- [ ] Filter or categorization system (optional)
-- [ ] Featured/pinned projects highlight
+- [x] Project card component with image, title, description
+- [x] Technology tags for each project
+- [x] Links to live demo and source code
+- [x] Featured/pinned projects highlight
 
 ### 1.5 Blog Section
 
@@ -91,6 +90,13 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Phase 3: Polish & Enhancements
 
+### 3.0 Projects Section Enhancements
+
+- [ ] Project image gallery/carousel in modal (multi-screenshot support)
+- [ ] Improve / rewrite Project descriptions
+- [ ] Improve Project Pictures
+- [ ] Add more projects
+
 ### 3.1 Theming
 
 - [ ] Dark/light mode toggle
@@ -107,11 +113,13 @@ A progressive feature roadmap for building out the portfolio site.
 
 ### 3.3 SEO & Performance
 
+- [ ] Improve / rewrite job descriptions
 - [ ] Meta tags and Open Graph data
 - [ ] Semantic HTML structure
 - [ ] Image optimization
 - [ ] Lazy loading for images
 - [ ] Performance audit and improvements
+- [ ] Reorganize components into more modular components
 
 ---
 

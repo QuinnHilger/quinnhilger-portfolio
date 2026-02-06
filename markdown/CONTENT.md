@@ -191,58 +191,120 @@ I’m evolving my development patterns to leverage the latest AI tools and explo
 
 ## 1.4 Projects
 
-### Project 1
+### Project 1: SpotMe
 
-| Field           | Value  |
-| --------------- | ------ |
-| Title           |        |
-| Description     |        |
-| Image Path      |        |
-| Live Demo URL   |        |
-| Source Code URL |        |
-| Featured?       | Yes/No |
+| Field        | Value                                                                          |
+| ------------ | ------------------------------------------------------------------------------ |
+| **Title**    | SpotMe                                                                         |
+| **Subtitle** | Social Fitness & AI Workout Platform                                           |
+| **Type**     | iOS Mobile App                                                                 |
+| **Image**    | `src/assets/projects/SpotMe-logo.png`                                          |
+| **Link**     | [App Store](https://apps.apple.com/us/app/spotme-the-workout-app/id6745230123) |
+| **Featured** | Yes                                                                            |
 
-**Technologies Used:**
+**Overview:**
+A production-ready iOS fitness ecosystem combining real-time social networking, AI-driven personalized training, and robust performance tracking. **Maintains a perfect 5-star rating on the App Store** with an active, growing user base.
 
--
--
--
+**Key Features:**
 
-### Project 2
+- **Commercial Execution:** Co-founded a formal LLC and successfully launched to the iOS App Store, currently scaling through targeted growth marketing.
+- **AI-Driven Personalization:** Architected an AI Workout Assistant using **OpenAI's advanced models** (GPT-4 class) to generate bespoke training regimens dynamically injected into the app’s core tracking engine.
+- **Real-time Social Suite:** Developed a high-concurrency communication layer using Supabase, supporting direct messaging, group chats, and a community "discovery" feed.
+- **Data-Rich Tracking:** Engineered a comprehensive logging system for lift volume, historical progress, and personal records.
+- **Gamification:** Built a competitive leaderboard system and interactive social features to drive user retention.
 
-| Field           | Value  |
-| --------------- | ------ |
-| Title           |        |
-| Description     |        |
-| Image Path      |        |
-| Live Demo URL   |        |
-| Source Code URL |        |
-| Featured?       | Yes/No |
+**Tech Stack:**
 
-**Technologies Used:**
+- React Native (Expo)
+- TypeScript
+- Supabase
+- PostgreSQL
+- OpenAI API
 
--
--
--
+---
 
-### Project 3
+### Project 2: Five Nubble
 
-| Field           | Value  |
-| --------------- | ------ |
-| Title           |        |
-| Description     |        |
-| Image Path      |        |
-| Live Demo URL   |        |
-| Source Code URL |        |
-| Featured?       | Yes/No |
+| Field        | Value                                  |
+| ------------ | -------------------------------------- |
+| **Title**    | Five Nubble                            |
+| **Subtitle** | Bespoke Property Management Platform   |
+| **Type**     | Mobile App                             |
+| **Image**    | `src/assets/projects/5Nubble-home.png` |
+| **Link**     | N/A                                    |
+| **Featured** | Yes                                    |
 
-**Technologies Used:**
+**Overview:**
+A bespoke property management platform **currently in private beta on TestFlight**, serving two active property estates. Features AI-driven dynamic theming and a real-time scheduling engine for shared residences.
 
--
--
--
+**Key Features:**
 
-<!-- Add more projects as needed -->
+- **Dynamic Theming:** Engineered a custom UI system using AI-generated imagery and styling to provide a home-specific branding experience.
+- **Real-time Scheduling:** Implemented a booking workflow using Supabase for seamless coordination of visitors and recurring stay schedules.
+- **Role-Based Access:** Architected a control system to differentiate between "Owners" and "Members," ensuring secure management of settings.
+- **Dashboard:** Developed an integrated digital bulletin board and "At-a-Glance" occupant dashboard to centralize communication.
+
+**Tech Stack:**
+
+- React Native (Expo)
+- TypeScript
+- Supabase
+- PostgreSQL
+
+---
+
+### Project 3: Pointed
+
+| Field        | Value                                                            |
+| ------------ | ---------------------------------------------------------------- |
+| **Title**    | Pointed                                                          |
+| **Subtitle** | Community-Driven Challenge & Habit Tracker                       |
+| **Type**     | Mobile App (Showcase)                                            |
+| **Image**    | `src/assets/projects/pointed.png`                                |
+| **Link**     | [YouTube Demo](https://youtu.be/STyPNCt8kKw?si=LfwuCuqqA09PfwVH) |
+| **Featured** | No                                                               |
+
+**Overview:**
+A complete cross-platform prototype that gamifies goal achievement through social leagues. Serves as a technical showcase for complex state management and real-time social features.
+
+**Key Features:**
+
+- **Gamified Architecture:** Engineered a flexible challenge system supporting daily, weekly, and one-time tasks with dynamic point values.
+- **Real-Time Engagement:** Integrated a live chat system and multi-scale leaderboards (weekly/monthly/all-time) to maintain retention.
+- **Data Visualization:** Built custom analytics views, including activity heatmaps and progress line graphs for visual consistency feedback.
+
+**Tech Stack:**
+
+- React Native (Expo)
+- TypeScript
+- Supabase
+- PostgreSQL
+
+---
+
+### Project 4: PrizePicks +EV Analytical Tool
+
+| Field        | Value                                       |
+| ------------ | ------------------------------------------- |
+| **Title**    | PrizePicks +EV Tool                         |
+| **Subtitle** | Data-Driven Sports Betting Advantage Finder |
+| **Type**     | Python Script / Data Tool                   |
+| **Image**    | `src/assets/projects/prizepicks.png`        |
+| **Link**     | N/A                                         |
+| **Featured** | No                                          |
+
+**Overview:**
+A data-driven Python utility that identifies mathematically profitable (+EV) PrizePicks entries. **Successfully identified promotional opportunities with 25-55% edge** over standard market implied probabilities.
+
+**Key Features:**
+
+- **Odds Derivation:** Implemented probability logic to convert two-way American odds into "fair" win probabilities by removing the house edge.
+- **Promotion Modeling:** Built custom handlers for site-specific events like Flex Friday and Taco Tuesday to accurately calculate shifted EV.
+- **Multi-Leg Optimization:** Created a simulator to compare the ROI of different slip configurations (Power Plays vs. Flex Plays).
+
+**Tech Stack:**
+
+- Python
 
 ---
 
