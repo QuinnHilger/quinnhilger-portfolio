@@ -1,0 +1,98 @@
+.post-navigation {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.post-navigation__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.post-navigation__link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.post-navigation__link:hover {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.post-navigation__link--prev {
+  text-align: left;
+}
+
+.post-navigation__link--next {
+  text-align: right;
+}
+
+.post-navigation__label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.post-navigation__link--next .post-navigation__label {
+  justify-content: flex-end;
+}
+
+.post-navigation__arrow {
+  color: #a78bfa;
+  transition: transform 0.2s ease;
+}
+
+.post-navigation__link:hover
+  .post-navigation__link--prev
+  .post-navigation__arrow {
+  transform: translateX(-4px);
+}
+
+.post-navigation__link--prev:hover .post-navigation__arrow {
+  transform: translateX(-4px);
+}
+
+.post-navigation__link--next:hover .post-navigation__arrow {
+  transform: translateX(4px);
+}
+
+.post-navigation__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .post-navigation__container {
+    grid-template-columns: 1fr;
+  }
+
+  .post-navigation__link--next {
+    text-align: left;
+  }
+
+  .post-navigation__link--next .post-navigation__label {
+    justify-content: flex-start;
+    flex-direction: row-reverse;
+  }
+}

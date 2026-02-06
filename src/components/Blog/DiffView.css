@@ -1,0 +1,94 @@
+.diff-view {
+  font-family: "Fira Code", "Monaco", "Consolas", monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: auto;
+}
+
+.diff-view__content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.diff-view__added {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.diff-view__removed {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  text-decoration: line-through;
+}
+
+.diff-view__legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+}
+
+.diff-view__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.diff-view__legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.diff-view__legend-color--added {
+  background: rgba(34, 197, 94, 0.3);
+  border: 1px solid #4ade80;
+}
+
+.diff-view__legend-color--removed {
+  background: rgba(239, 68, 68, 0.3);
+  border: 1px solid #f87171;
+}
+
+/* Side by side view for larger screens */
+.diff-view--side-by-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.diff-view__panel {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.diff-view__panel-header {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.diff-view__panel-header--raw {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.diff-view__panel-header--polished {
+  color: #a78bfa;
+}

@@ -1,0 +1,31 @@
+.giscus-comments {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.giscus-comments__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+}
+
+.giscus-comments__subtitle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 2rem 0;
+}
+
+.giscus-comments__container {
+  min-height: 200px;
+}
+
+/* Giscus iframe theme overrides */
+.giscus-comments__container .giscus {
+  max-width: 100%;
+}
+
+.giscus-comments__container iframe {
+  color-scheme: dark;
+}

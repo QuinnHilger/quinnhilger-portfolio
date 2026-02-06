@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { FluidParticles } from "./FluidParticles";
 import { TypewriterText } from "./TypewriterText";
 import { CyclingTagline } from "./CyclingTagline";
@@ -131,9 +132,9 @@ export function Hero() {
           </div>
 
           <div className="hero__ctas">
-            <a href="#blog" className="hero__cta hero__cta--primary">
+            <Link to="/blog" className="hero__cta hero__cta--primary">
               Read My Thoughts
-            </a>
+            </Link>
             <a
               href="#projects"
               className="hero__cta hero__cta--primary hero__cta--small"
