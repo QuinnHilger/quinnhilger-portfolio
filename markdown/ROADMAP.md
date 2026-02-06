@@ -38,13 +38,18 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Links to live demo and source code
 - [x] Featured/pinned projects highlight
 
-### 1.5 Blog Section
+### 1.5 Blog Section ✅
 
-- [ ] Blog post listing page
-- [ ] Individual blog post pages
-- [ ] Markdown content support
-- [ ] Reading time estimates
-- [ ] Tags/categories
+- [x] Blog post listing page
+- [x] Individual blog post pages
+- [x] Markdown content support
+- [x] Reading time estimates
+- [x] Tags/categories
+- [x] Raw/Polished version toggle with diff view
+- [x] Table of Contents with scroll spy
+- [x] Code copy button
+- [x] Previous/Next navigation
+- [x] Giscus comments integration
 
 ### 1.6 Skills & Tech Stack
 
@@ -125,7 +130,7 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Current Progress
 
-**Next Up:** Projects Section (1.4)
+**Next Up:** Skills & Tech Stack (1.6) or Navigation & Layout (Phase 2)
 
 ---
 

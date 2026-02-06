@@ -89,6 +89,17 @@
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 500;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.blog-reading-page__tag:hover {
+  background: rgba(139, 92, 246, 0.35);
+  border-color: rgba(139, 92, 246, 0.5);
+  color: #c4b5fd;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
 }
 
 /* Toggle Section */
