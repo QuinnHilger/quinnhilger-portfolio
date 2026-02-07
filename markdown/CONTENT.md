@@ -376,38 +376,21 @@ A data-driven Python utility that identifies mathematically profitable (+EV) Pri
 
 ### Contact Info
 
-| Field        | Value |
-| ------------ | ----- |
-| Email        |       |
-| Location     |       |
-| Availability |       |
-
-### Resume
-
-```
-<!-- Path to your resume PDF -->
-
-```
+| Field    | Value                 |
+| -------- | --------------------- |
+| Email    | quinnhilger@gmail.com |
+| Location | Boston, MA            |
 
 ### Contact Form Destination
 
 ```
-<!-- Email or service to receive contact form submissions -->
+quinnhilger@gmail.com
 
 ```
 
 ---
 
 ## Design Preferences (Optional)
-
-### Color Scheme
-
-```
-<!-- Any preferred colors or palette -->
-Primary:
-Secondary:
-Accent:
-```
 
 ### Typography
 

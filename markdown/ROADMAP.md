@@ -51,19 +51,18 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Previous/Next navigation
 - [x] Giscus comments integration
 
-### 1.6 Skills & Tech Stack
+### 1.6 Contact Section
+
+- [x] Contact form (name, email, message)
+- [x] Direct email link
+- [x] Social media links
+- [x] Location/availability info (optional)
+- [x] Link to resume (can be downloaded)
+
+### 1.7 Skills & Tech Stack
 
 - [ ] Visual skill badges or icons
 - [ ] Categorized by type (Frontend, Backend, Tools, etc.)
-- [ ] Proficiency indicators (optional)
-
-### 1.7 Contact Section
-
-- [ ] Contact form (name, email, message)
-- [ ] Direct email link
-- [ ] Social media links
-- [ ] Location/availability info (optional)
-- [ ] Link to resume (can be downloaded)
 
 ---
 
@@ -125,6 +124,7 @@ A progressive feature roadmap for building out the portfolio site.
 - [ ] Lazy loading for images
 - [ ] Performance audit and improvements
 - [ ] Reorganize components into more modular components
+- [ ] Formspree integration (future enhancement)
 
 ---
 
