@@ -59,10 +59,10 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Location/availability info (optional)
 - [x] Link to resume (can be downloaded)
 
-### 1.7 Skills & Tech Stack
+### 1.7 Skills & Tech Stack ✅
 
-- [ ] Visual skill badges or icons
-- [ ] Categorized by type (Frontend, Backend, Tools, etc.)
+- [x] Visual skill badges or icons
+- [x] Categorized by type (Frontend, Backend, Tools, etc.)
 
 ---
 
@@ -130,7 +130,7 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Current Progress
 
-**Next Up:** Skills & Tech Stack (1.6) or Navigation & Layout (Phase 2)
+**Next Up:** Skills & Tech Stack (1.7) or Navigation & Layout (Phase 2)
 
 ---
 
