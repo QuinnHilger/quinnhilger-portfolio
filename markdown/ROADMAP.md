@@ -4,7 +4,7 @@ A progressive feature roadmap for building out the portfolio site.
 
 ---
 
-## Phase 1: Core Sections
+## Phase 1: Core Sections ✅
 
 ### 1.1 Hero Section ✅
 
@@ -31,7 +31,7 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Visual timeline layout
 - [x] Education section
 
-### 1.4 Projects Section
+### 1.4 Projects Section ✅
 
 - [x] Project card component with image, title, description
 - [x] Technology tags for each project
@@ -51,7 +51,7 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Previous/Next navigation
 - [x] Giscus comments integration
 
-### 1.6 Contact Section
+### 1.6 Contact Section ✅
 
 - [x] Contact form (name, email, message)
 - [x] Direct email link
@@ -64,17 +64,27 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Visual skill badges or icons
 - [x] Categorized by type (Frontend, Backend, Tools, etc.)
 
+### 1.8 Publishing on GitHub Pages ✅
+
+- [x] Configure `vite.config.ts` with `base` URL for GitHub Pages
+- [x] Add `predeploy` and `deploy` scripts to `package.json`
+- [x] Integrate `gh-pages` for deployment
+- [x] Update router configuration with `basename`
+- [x] Implement `404.html` generator (copy of index.html) for SPA routing
+- [x] Fix blog cover image paths for base URL
+- [x] Add custom markdown image renderer for inline images
+- [x] Update README with live site link
+
 ---
 
 ## Phase 2: Navigation & Layout
 
-### 2.1 Header/Navigation
+### 2.1 Header/Navigation ✅
 
-- [ ] Fixed/sticky navigation bar
-- [ ] Logo or name branding
-- [ ] Navigation links to sections
-- [ ] Smooth scrolling behavior
-- [ ] Mobile hamburger menu
+- [x] Fixed/sticky navigation bar
+- [x] ~~Logo or name branding~~ _(skipped - user chose minimal nav)_
+- [x] Navigation links to sections
+- [x] Smooth scrolling behavior
 
 ### 2.2 Footer
 
@@ -83,12 +93,20 @@ A progressive feature roadmap for building out the portfolio site.
 - [ ] Social icons
 - [ ] Back to top button
 
-### 2.3 Responsive Design
+### 2.3 Mobile Re-Design
 
 - [ ] Mobile-first approach
 - [ ] Tablet breakpoints
-- [ ] Desktop optimizations
 - [ ] Touch-friendly interactions
+- [ ] Mobile hamburger menu
+
+### 2.4 Repo Re-Organization
+
+- [ ] Create components folder for each main section
+- [ ] Split up each section into modular components
+- [ ] Organize constants, types, and utils
+- [ ] Clarify config inputs for new sections in their own config files (projects, experience, etc.)
+  - note: the current setup for blog posts is good
 
 ---
 
@@ -99,23 +117,15 @@ A progressive feature roadmap for building out the portfolio site.
 - [ ] Project image gallery/carousel in modal (multi-screenshot support)
 - [ ] Improve / rewrite Project descriptions
 - [ ] Improve Project Pictures
-- [ ] Add more projects
 
-### 3.1 Theming
-
-- [ ] Dark/light mode toggle
-- [ ] Theme persistence (localStorage)
-- [ ] System preference detection
-- [ ] Smooth theme transitions
-
-### 3.2 Animations & Micro-interactions
+### 3.1 Animations & Micro-interactions
 
 - [ ] Scroll-triggered animations
 - [ ] Hover effects on interactive elements
 - [ ] Page load animations
 - [ ] Smooth transitions between states
 
-### 3.3 SEO & Performance
+### 3.2 SEO & Performance
 
 - [ ] Improve / rewrite job descriptions
 - [ ] Meta tags and Open Graph data

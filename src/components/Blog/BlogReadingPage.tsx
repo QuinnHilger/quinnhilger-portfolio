@@ -79,7 +79,7 @@ export function BlogReadingPage() {
           <div className="blog-reading-page__cover">
             {post.coverImage ? (
               <img
-                src={post.coverImage}
+                src={`${import.meta.env.BASE_URL}${post.coverImage.startsWith("/") ? post.coverImage.slice(1) : post.coverImage}`}
                 alt={post.title}
                 className="blog-reading-page__cover-img"
               />
@@ -171,6 +171,16 @@ export function BlogReadingPage() {
                       ) : (
                         <CodeBlock language={match[1]}>{codeString}</CodeBlock>
                       );
+                    },
+                    img: (props) => {
+                      const { src, alt, ...rest } = props;
+                      if (!src) return null;
+                      const isExternal = src.startsWith("http");
+                      const normalizedSrc = isExternal
+                        ? src
+                        : `${import.meta.env.BASE_URL}${src.startsWith("/") ? src.slice(1) : src}`;
+
+                      return <img src={normalizedSrc} alt={alt} {...rest} />;
                     },
                   }}
                 >

@@ -1,15 +1,10 @@
-import {
-  useState,
-  useRef,
-  useEffect,
-  useCallback,
-  type ReactNode,
-} from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
-import { Link } from "react-router-dom";
+import { SubPageHeader } from "./SubPageHeader";
+import "./ProjectsPage.css";
 import "./Projects.css";
 
-// Tech icons (reusing from Timeline)
+// Import everything from Projects.tsx
 import {
   SiReact,
   SiTypescript,
@@ -20,11 +15,11 @@ import {
   SiExpo,
 } from "react-icons/si";
 
-// Import project images
 import spotmeLogo from "../assets/projects/SpotMe-logo.png";
 import fiveNubbleHome from "../assets/projects/5Nubble-home.png";
 import pointedImg from "../assets/projects/pointed.png";
 import prizepicksImg from "../assets/projects/prizepicks.png";
+import type { ReactNode } from "react";
 
 interface TechItem {
   name: string;
@@ -148,7 +143,7 @@ const projects: Project[] = [
   },
 ];
 
-// ========== Status Badge ==========
+// Status Badge
 function StatusBadge({ status }: { status: Project["status"] }) {
   const labels = { live: "Live", beta: "Beta", showcase: "Showcase" };
   return (
@@ -158,7 +153,7 @@ function StatusBadge({ status }: { status: Project["status"] }) {
   );
 }
 
-// ========== Tech Badges (collapsed view) ==========
+// Tech Badges (collapsed view)
 function TechBadges({ tech }: { tech: TechItem[] }) {
   return (
     <div className="project-card__tech">
@@ -174,7 +169,7 @@ function TechBadges({ tech }: { tech: TechItem[] }) {
   );
 }
 
-// ========== Tech Badges (expanded view) ==========
+// Tech Badges (expanded view)
 function TechBadgesFull({ tech }: { tech: TechItem[] }) {
   return (
     <div className="project-modal__tech">
@@ -188,7 +183,7 @@ function TechBadgesFull({ tech }: { tech: TechItem[] }) {
   );
 }
 
-// ========== Project Modal (Full Screen Overlay) ==========
+// Project Modal
 interface ProjectModalProps {
   project: Project;
   projectIndex: number;
@@ -204,9 +199,6 @@ function ProjectModal({
   onClose,
   onNavigate,
 }: ProjectModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  // Prevent body scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -214,7 +206,6 @@ function ProjectModal({
     };
   }, []);
 
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -229,23 +220,14 @@ function ProjectModal({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose, onNavigate]);
 
-  // Close when clicking backdrop (not content)
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === modalRef.current) {
-      onClose();
-    }
-  };
-
   const hasPrev = projectIndex > 0;
   const hasNext = projectIndex < totalProjects - 1;
 
   return createPortal(
     <div
-      ref={modalRef}
       className="project-modal-overlay"
-      onClick={handleBackdropClick}
+      onClick={(e) => e.target === e.currentTarget && onClose()}
     >
-      {/* Navigation Arrows */}
       {hasPrev && (
         <button
           className="project-modal__nav project-modal__nav--prev"
@@ -266,7 +248,6 @@ function ProjectModal({
       )}
 
       <div className="project-modal">
-        {/* Close Button */}
         <button
           className="project-modal__close"
           onClick={onClose}
@@ -275,7 +256,6 @@ function ProjectModal({
           ✕
         </button>
 
-        {/* Hero Image */}
         <div className="project-modal__hero">
           <img
             src={project.image}
@@ -291,15 +271,12 @@ function ProjectModal({
           </div>
         </div>
 
-        {/* Content */}
         <div className="project-modal__body">
-          {/* Overview */}
           <section className="project-modal__section">
             <h3 className="project-modal__section-title">Overview</h3>
             <p className="project-modal__overview">{project.overview}</p>
           </section>
 
-          {/* Features */}
           <section className="project-modal__section">
             <h3 className="project-modal__section-title">Key Features</h3>
             <ul className="project-modal__features">
@@ -309,13 +286,11 @@ function ProjectModal({
             </ul>
           </section>
 
-          {/* Tech Stack */}
           <section className="project-modal__section">
             <h3 className="project-modal__section-title">Tech Stack</h3>
             <TechBadgesFull tech={project.tech} />
           </section>
 
-          {/* YouTube Video */}
           {project.youtubeId && (
             <section className="project-modal__section">
               <h3 className="project-modal__section-title">Demo Video</h3>
@@ -330,7 +305,6 @@ function ProjectModal({
             </section>
           )}
 
-          {/* Link */}
           {project.link && (
             <a
               href={project.link}
@@ -343,7 +317,6 @@ function ProjectModal({
           )}
         </div>
 
-        {/* Project counter */}
         <div className="project-modal__counter">
           {projectIndex + 1} / {totalProjects}
         </div>
@@ -353,7 +326,7 @@ function ProjectModal({
   );
 }
 
-// ========== Project Card (in grid) ==========
+// Project Card
 interface ProjectCardProps {
   project: Project;
   onExpand: () => void;
@@ -361,12 +334,9 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, onExpand }: ProjectCardProps) {
   const [tiltStyle, setTiltStyle] = useState<React.CSSProperties>({});
-  const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-
-    const rect = cardRef.current.getBoundingClientRect();
+    const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
@@ -387,23 +357,17 @@ function ProjectCard({ project, onExpand }: ProjectCardProps) {
     });
   };
 
-  const handleClick = () => {
-    onExpand();
-  };
-
   return (
     <div
-      ref={cardRef}
       className={`project-card project-card--${project.size}`}
       style={tiltStyle}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
+      onClick={onExpand}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === "Enter" && handleClick()}
+      onKeyDown={(e) => e.key === "Enter" && onExpand()}
     >
-      {/* Background Image with lazy loading */}
       <div className="project-card__image-container">
         <img
           src={project.image}
@@ -414,7 +378,6 @@ function ProjectCard({ project, onExpand }: ProjectCardProps) {
         <div className="project-card__overlay" />
       </div>
 
-      {/* Content */}
       <div className="project-card__content">
         <StatusBadge status={project.status} />
         <h3 className="project-card__title">{project.title}</h3>
@@ -422,7 +385,6 @@ function ProjectCard({ project, onExpand }: ProjectCardProps) {
         <TechBadges tech={project.tech} />
       </div>
 
-      {/* Animated click indicator */}
       <div className="project-card__expand-hint">
         <span className="project-card__expand-hint-text">
           Click to view details
@@ -433,19 +395,18 @@ function ProjectCard({ project, onExpand }: ProjectCardProps) {
   );
 }
 
-// ========== Main Projects Section ==========
-export function Projects() {
+// Main Projects Page
+export function ProjectsPage() {
   const [expandedProjectIndex, setExpandedProjectIndex] = useState<
     number | null
   >(null);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
-  // Intersection observer for entrance animations
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
     projects.forEach((project) => {
-      const element = document.getElementById(`project-${project.id}`);
+      const element = document.getElementById(`project-page-${project.id}`);
       if (!element) return;
 
       const observer = new IntersectionObserver(
@@ -464,7 +425,6 @@ export function Projects() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  // Navigation handler
   const handleNavigate = useCallback((direction: "prev" | "next") => {
     setExpandedProjectIndex((current) => {
       if (current === null) return null;
@@ -482,21 +442,22 @@ export function Projects() {
     expandedProjectIndex !== null ? projects[expandedProjectIndex] : null;
 
   return (
-    <section className="projects" id="projects">
-      <div className="projects__container">
-        <div className="projects__header">
-          <h2 className="projects__heading">Projects</h2>
-          <Link to="/projects" className="projects__view-all">
-            View All Projects
-            <span className="projects__view-all-arrow">→</span>
-          </Link>
+    <div className="projects-page">
+      <SubPageHeader />
+
+      <div className="projects-page__container">
+        <div className="projects-page__hero">
+          <h1 className="projects-page__title">My Projects</h1>
+          <p className="projects-page__subtitle">
+            A collection of apps, tools, and experiments I've built.
+          </p>
         </div>
 
         <div className="projects__grid">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              id={`project-${project.id}`}
+              id={`project-page-${project.id}`}
               className={`projects__item projects__item--${project.size} ${
                 visibleCards.has(project.id) ? "projects__item--visible" : ""
               }`}
@@ -510,7 +471,6 @@ export function Projects() {
         </div>
       </div>
 
-      {/* Modal Portal */}
       {expandedProject && expandedProjectIndex !== null && (
         <ProjectModal
           project={expandedProject}
@@ -520,6 +480,6 @@ export function Projects() {
           onNavigate={handleNavigate}
         />
       )}
-    </section>
+    </div>
   );
 }

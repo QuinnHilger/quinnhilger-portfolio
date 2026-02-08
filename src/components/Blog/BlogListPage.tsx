@@ -5,7 +5,7 @@ import {
   getFeaturedPosts,
   getAllTags,
 } from "../../hooks/blogLoader";
-import { BlogListHeader } from "./BlogHeader";
+import { SubPageHeader } from "../SubPageHeader";
 import { BlogCard } from "./BlogCard";
 import "./BlogListPage.css";
 
@@ -45,7 +45,7 @@ export function BlogListPage() {
 
   return (
     <div className="blog-list-page">
-      <BlogListHeader />
+      <SubPageHeader />
 
       <div className="blog-list-page__container">
         <div className="blog-list-page__hero">

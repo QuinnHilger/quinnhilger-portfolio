@@ -1,19 +1,56 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./BlogHeader.css";
 
 interface BlogHeaderProps {
   title?: string;
-  showTitle?: boolean;
   onFontSizeChange?: (delta: number) => void;
 }
 
-export function BlogHeader({
-  title,
-  showTitle = true,
-  onFontSizeChange,
-}: BlogHeaderProps) {
-  const navigate = useNavigate();
+const ArrowLeftIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path
+      d="M19 12H5M12 19l-7-7 7-7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const ChevronIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    className="breadcrumb-chevron"
+  >
+    <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const ShareIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path
+      d="M12 3v12M12 3l4 4M12 3L8 7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+    <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+export function BlogHeader({ title, onFontSizeChange }: BlogHeaderProps) {
   const [progress, setProgress] = useState(0);
   const [copied, setCopied] = useState(false);
 
@@ -46,6 +83,10 @@ export function BlogHeader({
     }
   };
 
+  // Truncate title for breadcrumb if too long
+  const truncatedTitle =
+    title && title.length > 30 ? title.substring(0, 30) + "..." : title;
+
   return (
     <>
       <div className="reading-progress">
@@ -55,68 +96,92 @@ export function BlogHeader({
         />
       </div>
 
-      <header className="blog-header">
-        <div className="blog-header__container">
-          <button className="blog-header__back" onClick={() => navigate(-1)}>
-            <span className="blog-header__back-arrow">←</span>
-            Back
-          </button>
+      <nav className="blog-reading-header" aria-label="Blog reading navigation">
+        <div className="blog-reading-header__pill">
+          {/* Breadcrumb Navigation */}
+          <div className="blog-reading-header__breadcrumb">
+            <Link to="/" className="blog-reading-header__crumb">
+              <ArrowLeftIcon />
+              <span>Portfolio</span>
+            </Link>
+            <ChevronIcon />
+            <Link to="/blog" className="blog-reading-header__crumb">
+              Blog
+            </Link>
+            {title && (
+              <>
+                <ChevronIcon />
+                <span
+                  className="blog-reading-header__crumb blog-reading-header__crumb--current"
+                  title={title}
+                >
+                  {truncatedTitle}
+                </span>
+              </>
+            )}
+          </div>
 
-          {showTitle && title && (
-            <h1 className="blog-header__title">{title}</h1>
-          )}
+          {/* Divider */}
+          <span className="blog-reading-header__divider" />
 
-          <div className="blog-header__actions">
+          {/* Actions */}
+          <div className="blog-reading-header__actions">
             {onFontSizeChange && (
-              <div className="blog-header__font-controls">
+              <>
                 <button
-                  className="blog-header__font-btn"
+                  className="blog-reading-header__action-btn"
                   onClick={() => onFontSizeChange(-1)}
                   title="Decrease font size"
                 >
                   A-
                 </button>
                 <button
-                  className="blog-header__font-btn"
+                  className="blog-reading-header__action-btn"
                   onClick={() => onFontSizeChange(1)}
                   title="Increase font size"
                 >
                   A+
                 </button>
-              </div>
+              </>
             )}
-
             <button
-              className="blog-header__action-btn"
+              className="blog-reading-header__action-btn blog-reading-header__action-btn--share"
               onClick={handleShare}
               title={copied ? "Copied!" : "Share"}
             >
-              {copied ? "✓" : "↗"}
+              {copied ? <CheckIcon /> : <ShareIcon />}
             </button>
           </div>
         </div>
-      </header>
+      </nav>
     </>
   );
 }
 
-// Simple header for blog list page
+// Simple header for blog list page - floating glassmorphic style
 export function BlogListHeader() {
   return (
-    <header className="blog-header">
-      <div className="blog-header__container">
-        <Link to="/" className="blog-header__back">
-          <span className="blog-header__back-arrow">←</span>
-          Portfolio
+    <nav className="blog-list-header" aria-label="Blog navigation">
+      <div className="blog-list-header__pill">
+        <Link to="/" className="blog-list-header__back">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="blog-list-header__icon"
+          >
+            <path
+              d="M19 12H5M12 19l-7-7 7-7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span>Portfolio</span>
         </Link>
-
-        <h1 className="blog-header__title">Blog</h1>
-
-        <div className="blog-header__actions">
-          {/* Placeholder for symmetry */}
-          <div style={{ width: 40 }} />
-        </div>
+        <span className="blog-list-header__divider" />
+        <span className="blog-list-header__label">Blog</span>
       </div>
-    </header>
+    </nav>
   );
 }

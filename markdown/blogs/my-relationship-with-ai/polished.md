@@ -85,6 +85,8 @@ The impact will extend far beyond a single profession. All of the work currently
 
 As a species, we may become so productive that we run out of things we need to do. The feeling of purpose and providing that fuels everyone waking up each day may start to fade. Something that sounds objectively good, productivity, may trigger a downfall for society.
 
+## I'd Rather Be Optimistic
+
 But where's the fun in that perspective? Being a pessimist counting down the days until the end of the world doesn't sound like an approach to life I'd prefer.
 
 So instead I'll maintain my hope. I believe humans are special little meat sacks capable of amazing things. If these amazing things lead to automating away the production of all necessities, freeing humans to satisfy themselves in more grand ways, I'm all for it. Maybe we start singing and dancing more. Maybe we explore nature that we've successfully saved from climate change through products of AI. I'm not sure what the specifics look like, but I definitely have hope that we'll figure it out.

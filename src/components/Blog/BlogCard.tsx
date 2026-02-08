@@ -25,7 +25,7 @@ export function BlogCard({ post, compact = false }: BlogCardProps) {
       <div className="blog-card__image-container">
         {post.coverImage ? (
           <img
-            src={post.coverImage}
+            src={`${import.meta.env.BASE_URL}${post.coverImage.startsWith("/") ? post.coverImage.slice(1) : post.coverImage}`}
             alt={post.title}
             className="blog-card__image"
             loading="lazy"
