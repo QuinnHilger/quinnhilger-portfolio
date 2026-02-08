@@ -1,3 +1,4 @@
+import React from "react";
 import { useTextScramble } from "../hooks/useTextScramble";
 
 interface ScrambleTextProps {
@@ -6,7 +7,7 @@ interface ScrambleTextProps {
   delay?: number;
   scrambleDuration?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: React.ElementType;
 }
 
 export function ScrambleText({
