@@ -130,7 +130,7 @@ A progressive feature roadmap for building out the portfolio site.
 
 ## Current Progress
 
-**Next Up:** Skills & Tech Stack (1.7) or Navigation & Layout (Phase 2)
+**Next Up:** Navigation & Layout (Phase 2)
 
 ---
 
