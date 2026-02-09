@@ -250,6 +250,11 @@
     justify-content: center;
   }
 
+  .hero__image-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+
   .hero__image {
     width: 250px;
     height: 250px;
@@ -259,6 +264,16 @@
 @media (max-width: 480px) {
   .hero {
     padding: 1rem;
+  }
+
+  .hero__image-wrapper {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Hide rotating border on mobile - too hard to align */
+  .hero__image-wrapper::before {
+    display: none;
   }
 
   .hero__image {

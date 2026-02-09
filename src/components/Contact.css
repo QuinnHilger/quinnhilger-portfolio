@@ -520,6 +520,25 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .contact__header {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .contact__photo-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+
+  .contact__title {
+    padding-left: 0;
+  }
+
+  .contact__title::before {
+    display: none;
+  }
+
   .contact__content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -537,6 +556,11 @@
 @media (max-width: 480px) {
   .contact {
     padding: 4rem 1rem;
+  }
+
+  .contact__photo-wrapper {
+    width: 220px;
+    height: 220px;
   }
 
   .contact__form-card,

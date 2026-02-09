@@ -77,6 +77,15 @@
 }
 
 .about__bio p:first-child::first-letter {
+  /* Reserved for drop cap styling if needed */
+}
+
+/* Mobile drawn photo */
+.about__mobile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 }
 
 /* Highlighted keywords */
@@ -181,6 +190,10 @@
 
 /* Responsive */
 @media (max-width: 900px) {
+  .about {
+    padding: 1rem 1.5rem 4rem; /* Reduced gap on mobile */
+  }
+
   .about__top-row {
     flex-direction: column;
     align-items: center;
@@ -206,8 +219,18 @@
   }
 
   .about__hobby {
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .about__hobby-text {
+    flex: 1;
+    min-width: 0; /* Allow text to shrink */
+  }
+
+  .about__hobby:hover {
+    transform: none; /* Disable hover slide on mobile */
   }
 }
 

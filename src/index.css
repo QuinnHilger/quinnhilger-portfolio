@@ -40,6 +40,12 @@ body {
   min-height: 100vh;
 }
 
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* Typography */
 h1,
 h2,

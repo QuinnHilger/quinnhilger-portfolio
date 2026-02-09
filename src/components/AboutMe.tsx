@@ -1,13 +1,26 @@
+import { useState, useEffect } from "react";
 import { useScrollFade } from "./ScrollFade";
 import { StaggeredFade } from "./StaggeredFade";
 import { CollapsibleSection } from "./CollapsibleSection";
+import drawnPhoto from "../assets/senior-picture-drawn.png";
 import "./AboutMe.css";
 
 export function AboutMe() {
+  const [isMobile, setIsMobile] = useState(false);
   const { ref: sectionRef, isVisible } = useScrollFade({ threshold: 0.35 });
   const { ref: focusRef, isVisible: focusVisible } = useScrollFade({
     threshold: 0.4,
   });
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const hobbies = [
     {
@@ -37,7 +50,14 @@ export function AboutMe() {
         {/* Top row: Photo placeholder (for morph) + Bio */}
         <div className="about__top-row">
           <div className="about__photo-placeholder">
-            {/* Photo is rendered via Hero morph - this is just a spacer */}
+            {/* Show drawn photo on mobile only */}
+            {isMobile && (
+              <img
+                src={drawnPhoto}
+                alt="Quinn Hilger - Hand drawn"
+                className="about__mobile-photo"
+              />
+            )}
           </div>
 
           <div className="about__intro">

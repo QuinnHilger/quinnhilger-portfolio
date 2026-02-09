@@ -12,6 +12,15 @@
     transform 0.3s ease;
 }
 
+/* Move hamburger to right side on mobile */
+@media (max-width: 640px) {
+  .nav {
+    left: auto;
+    right: 1.5rem;
+    transform: none;
+  }
+}
+
 .nav--visible {
   opacity: 1;
   visibility: visible;
@@ -86,8 +95,164 @@
   height: 1rem;
 }
 
-/* Mobile styles */
-@media (max-width: 768px) {
+/* Hamburger button - hidden on desktop */
+.nav__hamburger {
+  display: none;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: rgba(18, 18, 26, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav__hamburger svg {
+  width: 24px;
+  height: 24px;
+}
+
+.nav__hamburger:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.4);
+}
+
+/* Mobile overlay */
+.nav__mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.nav__mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 18, 26, 0.98) 0%,
+    rgba(10, 10, 15, 0.98) 100%
+  );
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.nav__mobile-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav__mobile-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+.nav__mobile-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.nav__mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 4rem;
+}
+
+.nav__mobile-link {
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.nav__mobile-link:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav__mobile-link--active {
+  color: var(--color-secondary);
+  background: rgba(167, 139, 250, 0.1);
+}
+
+.nav__mobile-top {
+  margin-top: auto;
+  padding: 1rem;
+  background: rgba(96, 165, 250, 0.1);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 12px;
+  color: #60a5fa;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav__mobile-top:hover {
+  background: rgba(96, 165, 250, 0.2);
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+/* Mobile styles - show hamburger, hide pill */
+@media (max-width: 640px) {
+  .nav__pill--desktop {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Tablet - compact pill */
+@media (min-width: 641px) and (max-width: 900px) {
   .nav__pill {
     gap: 0;
     padding: 0.5rem 0.75rem;

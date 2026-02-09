@@ -30,6 +30,17 @@ const EmailIcon = () => (
 
 export function Hero() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +55,7 @@ export function Hero() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Check initial state
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -54,12 +66,11 @@ export function Hero() {
     ["Curiosity Led", "Builder"],
   ];
 
-  // Calculate photo transform based on scroll
-  // Move from right side to left side as scroll progresses
-  const photoTranslateX = scrollProgress * -900; // Move left (vw based)
-  const photoTranslateY = scrollProgress * 92; // Move down much further
-  const heroPhotoOpacity = 1 - scrollProgress;
-  const drawnPhotoOpacity = scrollProgress;
+  // Calculate photo transform based on scroll (disabled on mobile)
+  const photoTranslateX = isMobile ? 0 : scrollProgress * -900;
+  const photoTranslateY = isMobile ? 0 : scrollProgress * 92;
+  const heroPhotoOpacity = isMobile ? 1 : 1 - scrollProgress;
+  const drawnPhotoOpacity = isMobile ? 0 : scrollProgress;
 
   // Fade out background elements as we scroll
   const backgroundOpacity = Math.max(0, 1 - scrollProgress * 1.5);
@@ -73,10 +84,11 @@ export function Hero() {
           transition: "opacity 0.1s ease-out",
         }}
       >
-        <FluidParticles particleCount={150} />
+        <FluidParticles particleCount={120} />
         <FlyingShips />
       </div>
-      <FalconCursor size={45} />
+      {/* Hide spaceship cursor on mobile - touch devices don't need it */}
+      {!isMobile && <FalconCursor size={45} />}
 
       <div className="hero__container">
         <div className="hero__content">
@@ -135,12 +147,6 @@ export function Hero() {
             <Link to="/blog" className="hero__cta hero__cta--primary">
               Read My Thoughts
             </Link>
-            <a
-              href="#projects"
-              className="hero__cta hero__cta--primary hero__cta--small"
-            >
-              View My Work
-            </a>
             <a
               href="#contact"
               className="hero__cta hero__cta--primary hero__cta--small"

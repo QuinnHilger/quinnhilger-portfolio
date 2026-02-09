@@ -382,25 +382,45 @@
 /* Responsive - Mobile */
 @media (max-width: 900px) {
   .timeline__line {
-    left: 20px;
+    left: 24px;
   }
 
   .timeline__entry {
-    width: calc(100% - 50px);
-    margin-left: 50px;
+    width: calc(100% - 56px);
+    margin-left: 56px;
+    align-self: stretch;
   }
 
   .timeline__entry--left,
   .timeline__entry--right {
     align-self: flex-start;
-    transform: translateX(-30px);
+    transform: none; /* Remove any horizontal shift */
+    margin-top: 0; /* Reset negative margin on mobile */
   }
 
+  .timeline__entry + .timeline__entry {
+    margin-top: 1.5rem; /* Add gap between entries */
+  }
+
+  /* Position nodes exactly on the left line - 56px card margin - 24px line position = 32px offset + half node (8px) */
   .timeline__entry--left .timeline__node,
   .timeline__entry--right .timeline__node {
-    left: -42px;
+    left: -40px; /* -32px to reach line + -8px for half of 16px node */
     right: auto;
-    transform: translateX(0);
+    transform: none;
+  }
+
+  /* Connector lines from node to card - consistent for all cards */
+  .timeline__entry--left .timeline__node::before,
+  .timeline__entry--right .timeline__node::before {
+    left: 100%;
+    right: auto;
+    width: 24px;
+    background: linear-gradient(
+      90deg,
+      rgba(96, 165, 250, 0.4),
+      rgba(255, 255, 255, 0.1)
+    );
   }
 
   .timeline__heading {

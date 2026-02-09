@@ -86,21 +86,14 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Navigation links to sections
 - [x] Smooth scrolling behavior
 
-### 2.2 Footer
+### 2.2 Mobile Re-Design ✅
 
-- [ ] Copyright notice
-- [ ] Quick links
-- [ ] Social icons
-- [ ] Back to top button
+- [x] Mobile-first approach
+- [x] Tablet breakpoints
+- [x] Touch-friendly interactions
+- [x] Mobile hamburger menu
 
-### 2.3 Mobile Re-Design
-
-- [ ] Mobile-first approach
-- [ ] Tablet breakpoints
-- [ ] Touch-friendly interactions
-- [ ] Mobile hamburger menu
-
-### 2.4 Repo Re-Organization
+### 2.3 Repo Re-Organization
 
 - [ ] Create components folder for each main section
 - [ ] Split up each section into modular components
