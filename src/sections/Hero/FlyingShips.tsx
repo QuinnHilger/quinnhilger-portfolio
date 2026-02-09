@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import deathStarSvg from "../assets/svg/death-star.svg";
-import starTrekSvg from "../assets/svg/star-trek.svg";
+import deathStarSvg from "../../assets/svg/death-star.svg";
+import starTrekSvg from "../../assets/svg/star-trek.svg";
 
 interface Ship {
   id: number;

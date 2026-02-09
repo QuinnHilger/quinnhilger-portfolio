@@ -1,5 +1,5 @@
 import React from "react";
-import { useTextScramble } from "../hooks/useTextScramble";
+import { useTextScramble } from "../../hooks/useTextScramble";
 
 interface ScrambleTextProps {
   text: string;

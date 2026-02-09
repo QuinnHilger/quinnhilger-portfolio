@@ -1,5 +1,5 @@
 import React from "react";
-import { useTypewriter } from "../hooks/useTypewriter";
+import { useTypewriter } from "../../hooks/useTypewriter";
 
 interface TypewriterTextProps {
   text: string;

@@ -1,10 +1,11 @@
-import { Hero } from "./components/Hero";
-import { AboutMe } from "./components/AboutMe";
-import { Timeline } from "./components/Timeline";
-import { Projects } from "./components/Projects";
-import { Skills } from "./components/Skills";
-import { BlogSummary } from "./components/Blog/BlogSummary";
-import { Contact } from "./components/Contact";
+
+import { Hero } from "./sections/Hero/Hero";
+import { AboutMe } from "./sections/About/AboutMe";
+import { Timeline } from "./sections/Experience/Experience";
+import { Projects } from "./sections/Projects/Projects";
+import { Skills } from "./sections/About/Skills";
+import { BlogSummary } from "./sections/Blog/BlogSummary";
+import { Contact } from "./sections/Contact/Contact";
 import { Navigation } from "./components/Navigation";
 import { SideDotsNav } from "./components/SideDotsNav";
 

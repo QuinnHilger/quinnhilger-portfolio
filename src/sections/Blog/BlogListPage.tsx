@@ -5,7 +5,7 @@ import {
   getFeaturedPosts,
   getAllTags,
 } from "../../hooks/blogLoader";
-import { SubPageHeader } from "../SubPageHeader";
+import { SubPageHeader } from "../../components/SubPageHeader";
 import { BlogCard } from "./BlogCard";
 import "./BlogListPage.css";
 

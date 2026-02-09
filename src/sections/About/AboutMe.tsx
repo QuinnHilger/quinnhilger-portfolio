@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useScrollFade } from "./ScrollFade";
-import { StaggeredFade } from "./StaggeredFade";
-import { CollapsibleSection } from "./CollapsibleSection";
-import drawnPhoto from "../assets/senior-picture-drawn.png";
+import { useScrollFade } from "../../components/ScrollFade";
+import { StaggeredFade } from "../../components/StaggeredFade";
+import { CollapsibleSection } from "../../components/CollapsibleSection";
+import drawnPhoto from "../../assets/senior-picture-drawn.png";
 import "./AboutMe.css";
 
 export function AboutMe() {

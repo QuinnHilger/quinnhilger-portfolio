@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import "./Contact.css";
-import resumePdf from "../assets/docs/8-24-Resume.pdf";
-import yosemiteImg from "../assets/yosemite.jpg";
-import bostonMapImg from "../assets/Boston-Map-Cropped.png";
+import resumePdf from "../../assets/docs/8-24-Resume.pdf";
+import yosemiteImg from "../../assets/yosemite.jpg";
+import bostonMapImg from "../../assets/Boston-Map-Cropped.png";
 
 // Icons
 const SendIcon = () => (

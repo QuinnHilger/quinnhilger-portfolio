@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import falconSvg from "../assets/svg/falcon.svg";
+import falconSvg from "../../assets/svg/falcon.svg";
 
 interface TrailParticle {
   id: number;

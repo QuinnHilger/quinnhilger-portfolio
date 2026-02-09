@@ -5,8 +5,8 @@ import { TypewriterText } from "./TypewriterText";
 import { CyclingTagline } from "./CyclingTagline";
 import { FalconCursor } from "./FalconCursor";
 import { FlyingShips } from "./FlyingShips";
-import profileImage from "../assets/ucla-senior-photo.jpg";
-import drawnPhoto from "../assets/senior-picture-drawn.png";
+import profileImage from "../../assets/ucla-senior-photo.jpg";
+import drawnPhoto from "../../assets/senior-picture-drawn.png";
 import "./Hero.css";
 
 // Icons as inline SVGs
