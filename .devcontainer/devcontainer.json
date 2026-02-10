@@ -1,0 +1,35 @@
+{
+	"name": "Portfolio Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+    "containerEnv": {
+        "ANTIGRAVITY_BROWSER_HOST": "host.docker.internal"
+    },
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "antigravity.browser.enabled": true,
+                "antigravity.agent.executionPolicy": "alwaysProceed",
+                "antigravity.agent.reviewPolicy": "alwaysProceed",
+                "editor.formatOnSave": true,
+                "editor.defaultFormatter": "esbenp.prettier-vscode",
+                "editor.codeActionsOnSave": {
+                    "source.fixAll.eslint": "explicit"
+                }
+            },
+            "extensions": [
+                "dbaeumer.vscode-eslint",
+                "esbenp.prettier-vscode",
+                "ms-azuretools.vscode-docker",
+                "dsznajder.es7-react-js-snippets"
+            ]
+        }
+    },
+    "postCreateCommand": "mkdir -p ~/.antigravity-server/bin/1504c8cc4b34dbfbb4a97ebe954b3da2b5634516 && ln -s /root/.antigravity-server/bin/1.16.5-1504c8cc4b34dbfbb4a97ebe954b3da2b5634516/node ~/.antigravity-server/bin/1504c8cc4b34dbfbb4a97ebe954b3da2b5634516/node"
+}

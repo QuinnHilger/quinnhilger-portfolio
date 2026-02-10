@@ -95,11 +95,18 @@ A progressive feature roadmap for building out the portfolio site.
 
 ### 2.3 Repo Re-Organization
 
-- [ ] Create components folder for each main section
-- [ ] Split up each section into modular components
-- [ ] Organize constants, types, and utils
-- [ ] Clarify config inputs for new sections in their own config files (projects, experience, etc.)
+- [x] Create components folder for each main section
+- [x] Split up each section into modular components
+- [x] Organize constants, types, and utils
+- [x] Clarify config inputs for new sections in their own config files (projects, experience, etc.)
   - note: the current setup for blog posts is good
+
+### 2.4 Improve Mobile Version ✅
+
+- [x] Make the nav bar in the blog page only visible at the top of the page on mobile
+- [x] Fix the dots background on mobile, instead of the dynamic dots if mobile use a static background of starts/galaxies (ships still moving but no gravity like before on the dots)
+- [x] Disable outer scroll on projects modal when on mobile, only inner modal scroll should be enabled
+- [x] Add the Contents section to the blog in between the Polished button group and the start of the blog for mobile, leave it as is for web
 
 ---
 

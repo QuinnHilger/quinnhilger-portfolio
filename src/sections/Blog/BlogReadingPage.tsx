@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import { getBlogPostBySlug, getAdjacentPosts } from "../../hooks/blogLoader";
 import { BlogHeader } from "./BlogHeader";
 import { VersionToggle, type VersionType } from "./VersionToggle";
-import { TableOfContents } from "./TableOfContents";
+import { TableOfContents, extractTocItems } from "./TableOfContents";
 import { DiffView } from "./DiffView";
 import { CodeBlock } from "./CodeBlock";
 import { PostNavigation } from "./PostNavigation";
@@ -122,6 +122,13 @@ export function BlogReadingPage() {
             />
           </div>
 
+          {/* Table of Contents - Mobile Only */}
+          {extractTocItems(currentContent).length > 0 && (
+            <div className="blog-reading-page__mobile-toc">
+              <TableOfContents content={currentContent} />
+            </div>
+          )}
+
           {/* Content */}
           <article
             className={`blog-reading-page__content-wrapper ${
@@ -197,7 +204,7 @@ export function BlogReadingPage() {
           <GiscusComments term={post.slug} />
         </main>
 
-        {/* Sidebar with TOC */}
+        {/* Sidebar with TOC - Desktop Only */}
         <aside className="blog-reading-page__sidebar">
           <TableOfContents content={currentContent} />
         </aside>

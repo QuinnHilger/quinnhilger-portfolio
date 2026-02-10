@@ -157,6 +157,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .blog-list-header__pill {
@@ -239,6 +240,7 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .blog-reading-header__pill {
@@ -386,4 +388,17 @@
     height: 28px;
     font-size: 0.65rem;
   }
+
+  .blog-reading-header--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Blog list header hidden on mobile scroll */
+.blog-list-header--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

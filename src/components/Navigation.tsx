@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useActiveSection } from "../hooks/useActiveSection";
 import "./Navigation.css";
 
@@ -37,20 +38,38 @@ const CloseIcon = () => (
 export function Navigation() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
   const activeSection = useActiveSection(SECTION_IDS);
+  const location = useLocation();
+  const isBlogPage = location.pathname.startsWith("/blog");
+
+  // Logic for static/absolute positioning on mobile blog page
+  const isStaticOnMobile = isBlogPage && isMobile;
+
+  // Track mobile viewport changes
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 640);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav after scrolling past 80% of viewport height
-      const threshold = window.innerHeight * 0.8;
-      setIsVisible(window.scrollY > threshold);
+      if (isStaticOnMobile) {
+        // On mobile blog pages: visible at top, hidden after scrolling
+        setIsVisible(window.scrollY < 100);
+      } else {
+        // Default: show nav after scrolling past 80% of viewport height
+        const threshold = window.innerHeight * 0.8;
+        setIsVisible(window.scrollY > threshold);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Check initial state
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isStaticOnMobile]);
 
   // Close menu on escape key
   useEffect(() => {
@@ -89,8 +108,9 @@ export function Navigation() {
   return (
     <>
       <nav
-        className={`nav ${isVisible ? "nav--visible" : ""}`}
+        className={`nav ${isVisible || isStaticOnMobile ? "nav--visible" : ""} ${isStaticOnMobile ? "nav--static" : ""}`}
         aria-label="Main navigation"
+        style={isStaticOnMobile ? { position: "absolute", top: "1.5rem", opacity: 1, visibility: "visible" } : {}}
       >
         {/* Desktop navigation pill */}
         <div className="nav__pill nav__pill--desktop">

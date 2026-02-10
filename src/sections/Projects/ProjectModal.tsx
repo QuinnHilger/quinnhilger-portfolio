@@ -23,11 +23,21 @@ export function ProjectModal({
 }: ProjectModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open (robust iOS support)
   useEffect(() => {
+    const scrollY = window.scrollY;
     document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+    document.documentElement.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+      window.scrollTo(0, scrollY);
     };
   }, []);
 
@@ -56,11 +66,20 @@ export function ProjectModal({
   const hasPrev = projectIndex > 0;
   const hasNext = projectIndex < totalProjects - 1;
 
+  // Prevent touch scroll leak-through on the overlay (iOS)
+  const handleOverlayTouchMove = (e: React.TouchEvent) => {
+    // Only prevent if touching the overlay backdrop, not the modal content
+    if (e.target === modalRef.current) {
+      e.preventDefault();
+    }
+  };
+
   return createPortal(
     <div
       ref={modalRef}
       className="project-modal-overlay"
       onClick={handleBackdropClick}
+      onTouchMove={handleOverlayTouchMove}
     >
       {/* Navigation Arrows */}
       {hasPrev && (

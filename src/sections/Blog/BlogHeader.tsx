@@ -53,6 +53,7 @@ const CheckIcon = () => (
 export function BlogHeader({ title, onFontSizeChange }: BlogHeaderProps) {
   const [progress, setProgress] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [isMobileHidden, setIsMobileHidden] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,10 +62,21 @@ export function BlogHeader({ title, onFontSizeChange }: BlogHeaderProps) {
         document.documentElement.scrollHeight - window.innerHeight;
       const scrollProgress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, scrollProgress)));
+
+      // Hide header on mobile after scrolling past 100px
+      if (window.innerWidth <= 768) {
+        setIsMobileHidden(scrollTop > 100);
+      } else {
+        setIsMobileHidden(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const handleShare = async () => {
@@ -96,7 +108,7 @@ export function BlogHeader({ title, onFontSizeChange }: BlogHeaderProps) {
         />
       </div>
 
-      <nav className="blog-reading-header" aria-label="Blog reading navigation">
+      <nav className={`blog-reading-header ${isMobileHidden ? "blog-reading-header--hidden" : ""}`} aria-label="Blog reading navigation">
         <div className="blog-reading-header__pill">
           {/* Breadcrumb Navigation */}
           <div className="blog-reading-header__breadcrumb">
@@ -160,8 +172,27 @@ export function BlogHeader({ title, onFontSizeChange }: BlogHeaderProps) {
 
 // Simple header for blog list page - floating glassmorphic style
 export function BlogListHeader() {
+  const [isMobileHidden, setIsMobileHidden] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        setIsMobileHidden(window.scrollY > 100);
+      } else {
+        setIsMobileHidden(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="blog-list-header" aria-label="Blog navigation">
+    <nav className={`blog-list-header ${isMobileHidden ? "blog-list-header--hidden" : ""}`} aria-label="Blog navigation">
       <div className="blog-list-header__pill">
         <Link to="/" className="blog-list-header__back">
           <svg

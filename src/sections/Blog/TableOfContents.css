@@ -76,9 +76,3 @@
 .table-of-contents::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
 }
-
-@media (max-width: 1100px) {
-  .table-of-contents {
-    display: none;
-  }
-}

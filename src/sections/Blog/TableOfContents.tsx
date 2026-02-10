@@ -11,28 +11,31 @@ interface TableOfContentsProps {
   content: string;
 }
 
+/** Extract headings from markdown content */
+export function extractTocItems(content: string): TocItem[] {
+  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  const extracted: TocItem[] = [];
+  let match;
+
+  while ((match = headingRegex.exec(content)) !== null) {
+    const level = match[1].length;
+    const text = match[2];
+    const id = text
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    extracted.push({ id, text, level });
+  }
+
+  return extracted;
+}
+
 export function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState<string>("");
 
   // Extract headings from markdown content using useMemo to avoid cascading renders
-  const items = useMemo(() => {
-    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-    const extracted: TocItem[] = [];
-    let match;
-
-    while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length;
-      const text = match[2];
-      const id = text
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/(^-|-$)/g, "");
-
-      extracted.push({ id, text, level });
-    }
-
-    return extracted;
-  }, [content]);
+  const items = useMemo(() => extractTocItems(content), [content]);
 
   // Track active heading on scroll
   useEffect(() => {

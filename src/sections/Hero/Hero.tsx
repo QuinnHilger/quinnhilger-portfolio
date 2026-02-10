@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FluidParticles } from "./FluidParticles";
+import { StaticStars } from "./StaticStars";
 import { TypewriterText } from "./TypewriterText";
 import { CyclingTagline } from "./CyclingTagline";
 import { FalconCursor } from "./FalconCursor";
@@ -84,7 +85,11 @@ export function Hero() {
           transition: "opacity 0.1s ease-out",
         }}
       >
-        <FluidParticles particleCount={120} />
+        {isMobile ? (
+          <StaticStars starCount={100} />
+        ) : (
+          <FluidParticles particleCount={120} />
+        )}
         <FlyingShips />
       </div>
       {/* Hide spaceship cursor on mobile - touch devices don't need it */}
