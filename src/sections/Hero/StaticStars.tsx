@@ -18,30 +18,27 @@ export function StaticStars({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const drawStars = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Use the canvas's own rendered dimensions (works correctly
+    // whether position:fixed or contained by a transform parent)
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (let i = 0; i < starCount; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const radius = Math.random() * 1.5;
-        const opacity = Math.random();
+    for (let i = 0; i < starCount; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 1.5;
+      const opacity = Math.random();
 
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = starColor.replace("0.8)", `${opacity})`);
-        ctx.fill();
-      }
-    };
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = starColor.replace(/[\d.]+\)$/, `${opacity})`);
+      ctx.fill();
+    }
 
-    drawStars();
-    window.addEventListener("resize", drawStars);
-
-    return () => {
-      window.removeEventListener("resize", drawStars);
-    };
+    // No resize listener — avoids mobile jitter from address bar changes.
+    // Stars are drawn once and stay put.
   }, [starCount, starColor]);
 
   return (

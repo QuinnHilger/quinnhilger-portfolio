@@ -101,12 +101,16 @@ A progressive feature roadmap for building out the portfolio site.
 - [x] Clarify config inputs for new sections in their own config files (projects, experience, etc.)
   - note: the current setup for blog posts is good
 
-### 2.4 Improve Mobile Version ✅
+### 2.4 Improve Mobile Version
 
 - [x] Make the nav bar in the blog page only visible at the top of the page on mobile
 - [x] Fix the dots background on mobile, instead of the dynamic dots if mobile use a static background of starts/galaxies (ships still moving but no gravity like before on the dots)
 - [x] Disable outer scroll on projects modal when on mobile, only inner modal scroll should be enabled
 - [x] Add the Contents section to the blog in between the Polished button group and the start of the blog for mobile, leave it as is for web
+- [ ] Optimize image loading and sizes for mobile networks
+- [ ] Improve touch targets (minimum 44x44px) for all clickable elements
+- [ ] Add a "back to top" button for long scrolling sections on mobile
+- [ ] Reduce heavy animations on mobile for better performance and battery life
 
 ---
 

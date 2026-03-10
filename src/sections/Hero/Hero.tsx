@@ -78,20 +78,35 @@ export function Hero() {
 
   return (
     <section className="hero">
-      {/* Background elements that fade out on scroll */}
-      <div
-        style={{
-          opacity: backgroundOpacity,
-          transition: "opacity 0.1s ease-out",
-        }}
-      >
-        {isMobile ? (
+      {/* Mobile: stars + ships contained to hero only.
+          transform creates a new containing block so position:fixed children
+          behave as position:absolute — no more stars everywhere or scroll jitter */}
+      {isMobile && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            overflow: "hidden",
+            transform: "translateZ(0)",
+            zIndex: 0,
+          }}
+        >
           <StaticStars starCount={100} />
-        ) : (
+          <FlyingShips />
+        </div>
+      )}
+      {/* Desktop: background fades out on scroll */}
+      {!isMobile && (
+        <div
+          style={{
+            opacity: backgroundOpacity,
+            transition: "opacity 0.1s ease-out",
+          }}
+        >
           <FluidParticles particleCount={120} />
-        )}
-        <FlyingShips />
-      </div>
+          <FlyingShips />
+        </div>
+      )}
       {/* Hide spaceship cursor on mobile - touch devices don't need it */}
       {!isMobile && <FalconCursor size={45} />}
 

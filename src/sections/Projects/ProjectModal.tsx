@@ -1,4 +1,3 @@
-
 import { useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { Project } from "../../types";
@@ -22,6 +21,14 @@ export function ProjectModal({
   onNavigate,
 }: ProjectModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const modalContentRef = useRef<HTMLDivElement>(null);
+
+  // Reset modal scroll to top when opened or project changes
+  useEffect(() => {
+    if (modalContentRef.current) {
+      modalContentRef.current.scrollTop = 0;
+    }
+  }, [project]);
 
   // Prevent body scroll when modal is open (robust iOS support)
   useEffect(() => {
@@ -37,7 +44,7 @@ export function ProjectModal({
       document.body.style.top = "";
       document.body.style.width = "";
       document.documentElement.style.overflow = "";
-      window.scrollTo(0, scrollY);
+      window.scrollTo({ top: scrollY, left: 0, behavior: "instant" });
     };
   }, []);
 
@@ -101,7 +108,7 @@ export function ProjectModal({
         </button>
       )}
 
-      <div className="project-modal">
+      <div ref={modalContentRef} className="project-modal">
         {/* Close Button */}
         <button
           className="project-modal__close"

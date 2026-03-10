@@ -28,8 +28,8 @@ export function AboutMe() {
       text: "Coffee",
       detail: "Espresso, latte art, bean exploration",
     },
-    { icon: "🏃", text: "Running", detail: "Next Marathon 2/14/2026" },
-    { icon: "🏋️", text: "Lifting", detail: "Goal 315 1RM Bench Press" },
+    { icon: "🏃", text: "Running", detail: "Marathon PR: 3:12:49" },
+    { icon: "🏋️", text: "Lifting", detail: "Bench Press 1RM: 275 lbs" },
     {
       icon: "⚽",
       text: "Playing Sports",
